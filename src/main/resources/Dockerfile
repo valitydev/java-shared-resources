@@ -1,6 +1,6 @@
 # @dockerfile.Template@
 FROM dr.rbkmoney.com/rbkmoney/service-java:@dockerfile.base.service.tag@
-MAINTAINER Poluektov Yevgeniy <e.poluektov@rbkmoney.com>
+MAINTAINER @project.maintainer@
 
 COPY @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
 
