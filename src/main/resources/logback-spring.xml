@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
+    <property name="logback.appenders" value="${logback.appenders:-CONSOLE,FILE}"/>
 
     <include resource="com/rbkmoney/sharedresources/logback/spring-defaults.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/console-appender.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/json-appender.xml"/>
 
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
+        <if condition='property("logback.appenders").contains("CONSOLE")'>
+            <then>
+                <appender-ref ref="CONSOLE"/>
+            </then>
+        </if>
+        <if condition='property("logback.appenders").contains("FILE")'>
+            <then>
+                <appender-ref ref="FILE"/>
+            </then>
+        </if>
     </root>
 
-    <logger name="com.rbkmoney" level="ALL"/>
+    <logger name="com.rbkmoney" level="${logging.level.rbkmoney:-ALL}"/>
+    <logger name="com.rbkmoney.woody" level="${logging.level.rbkmoney.woody:-ALL}"/>
+
 
     <jmxConfigurator/>
 </configuration>
