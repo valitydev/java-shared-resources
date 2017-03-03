@@ -7,7 +7,7 @@
     <include resource="com/rbkmoney/sharedresources/logback/console-appender.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/json-appender.xml"/>
 
-    <root level="INFO">
+    <root level="${logging.level.root:-INFO}">
         <if condition='property("logback.appenders").contains("CONSOLE")'>
             <then>
                 <appender-ref ref="CONSOLE"/>
