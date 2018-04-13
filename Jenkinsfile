@@ -1,5 +1,5 @@
 #!groovy
-build('geck', 'docker-host') {
+build('java-shared-resources', 'docker-host') {
     checkoutRepo()
     loadBuildUtils()
 
