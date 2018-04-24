@@ -6,7 +6,7 @@ COPY @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
 
 CMD ["java", "-Xmx256m", "-jar","/opt/@artifactId@/@artifactId@.jar"]
 
-EXPOSE @server.port@
+EXPOSE @exposed.ports@
 
 LABEL com.rbkmoney.@artifactId@.parent=service-java \
     com.rbkmoney.@artifactId@.parent_tag=@dockerfile.base.service.tag@ \
