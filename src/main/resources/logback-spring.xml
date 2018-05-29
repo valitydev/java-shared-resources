@@ -21,7 +21,7 @@
     </root>
 
     <logger name="com.rbkmoney" level="${logging.level.rbkmoney:-ALL}"/>
-    <logger name="com.rbkmoney.woody" level="${logging.level.rbkmoney.woody:-ALL}" additivity="false"/>
+    <logger name="com.rbkmoney.woody" level="${logging.level.rbkmoney.woody:-ALL}"/>
 
     <jmxConfigurator/>
 </configuration>
