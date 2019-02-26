@@ -20,8 +20,8 @@
         </if>
     </root>
 
-    <logger name="com.rbkmoney" level="${loggingLevelRbk}"/>
-    <logger name="com.rbkmoney.woody" level="${loggingLevelRbkWoody}"/>
+    <logger name="com.rbkmoney" level="ALL"/>
+    <logger name="com.rbkmoney.woody" level="ALL"/>
 
     <jmxConfigurator/>
 </configuration>
