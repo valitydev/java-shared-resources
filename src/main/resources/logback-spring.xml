@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
-    <property name="logback.appenders" value="${logback.appenders:-CONSOLE,FILE}"/>
-
+    <property name="LOG_FILE"
+              value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="com/rbkmoney/sharedresources/logback/properties-appender.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/json-appender.xml"/>
 
-    <root level="${logging.level.root:-INFO}">
-        <if condition='property("logback.appenders").contains("CONSOLE")'>
+    <root level="${loggingLevelRoot}">
+        <if condition='${logbackAppenders}.contains("CONSOLE")'>
             <then>
                 <appender-ref ref="CONSOLE"/>
             </then>
         </if>
-        <if condition='property("logback.appenders").contains("FILE")'>
+        <if condition='${logbackAppenders}.contains("FILE")'>
             <then>
                 <appender-ref ref="FILE"/>
             </then>
         </if>
     </root>
 
-    <logger name="com.rbkmoney" level="${logging.level.rbkmoney:-ALL}"/>
-    <logger name="com.rbkmoney.woody" level="${logging.level.rbkmoney.woody:-ALL}"/>
+    <logger name="com.rbkmoney" level="${loggingLevelRbk}"/>
+    <logger name="com.rbkmoney.woody" level="${loggingLevelRbkWoody}"/>
 
     <jmxConfigurator/>
 </configuration>
