@@ -2,18 +2,19 @@
 <configuration>
     <property name="LOG_FILE"
               value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
+    <property name="LOG_APPENDERS" value="${logbackAppenders:-CONSOLE,FILE}"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/properties-appender.xml"/>
     <include resource="com/rbkmoney/sharedresources/logback/json-appender.xml"/>
 
     <root level="${loggingLevelRoot}">
-        <if condition='${logbackAppenders}.contains("CONSOLE")'>
+        <if condition='property("LOG_APPENDERS").contains("CONSOLE")'>
             <then>
                 <appender-ref ref="CONSOLE"/>
             </then>
         </if>
-        <if condition='${logbackAppenders}.contains("FILE")'>
+        <if condition='property("LOG_APPENDERS").contains("FILE")'>
             <then>
                 <appender-ref ref="FILE"/>
             </then>
