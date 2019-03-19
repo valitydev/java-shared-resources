@@ -15,10 +15,6 @@
     <version>0.3.6</version>
     <packaging>jar</packaging>
 
-    <properties>
-        <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
