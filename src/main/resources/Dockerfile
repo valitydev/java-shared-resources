@@ -1,5 +1,5 @@
 # @dockerfile.Template@
-FROM dr.rbkmoney.com/rbkmoney/service-java:@dockerfile.base.service.tag@
+FROM @dockerfile.registry@/rbkmoney/service-java:@dockerfile.base.service.tag@
 MAINTAINER @project.maintainer@
 
 COPY @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
