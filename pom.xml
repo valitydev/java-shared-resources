@@ -7,25 +7,48 @@
     <parent>
         <groupId>com.rbkmoney</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.5</version>
     </parent>
 
-    <groupId>com.rbkmoney</groupId>
     <artifactId>shared-resources</artifactId>
-    <version>0.3.6</version>
+    <version>0.3.7</version>
     <packaging>jar</packaging>
+
+    <name>Java shared resources</name>
+    <description>Dockerfile, git.properties and logback configuration</description>
+    <url>https://github.com/rbkmoney/java-shared-resources</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <organization>RBK.money</organization>
+            <organizationUrl>https://rbk.money</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/rbkmoney/java-shared-resources.git</connection>
+        <developerConnection>scm:git:ssh://github.com/rbkmoney/java-shared-resources.git</developerConnection>
+        <url>https://github.com/rbkmoney/java-shared-resources/tree/master</url>
+    </scm>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
-            <version>2.0.0.RELEASE</version>
+            <version>2.3.0.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.rbkmoney.logback</groupId>
             <artifactId>nop-rolling</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>net.logstash.logback</groupId>
