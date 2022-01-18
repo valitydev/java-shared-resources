@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <mdc/>
+                <threadName/>
+                <message/>
+                <version/>
+                <loggerName/>
+                <context/>
+                <pattern>
+                    <pattern>
+                        {
+                        "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
+                        "@severity": "%level",
+                        "application": "@artifactId@",
+                        "application_version": "@version@"
+                        }
+                    </pattern>
+                </pattern>
+                <stackTrace>
+                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <shortenedClassNameLength>20</shortenedClassNameLength>
+                        <rootCauseFirst>true</rootCauseFirst>
+                    </throwableConverter>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
+</included>

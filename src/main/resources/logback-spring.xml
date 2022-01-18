@@ -4,9 +4,9 @@
               value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
     <property name="LOG_APPENDERS" value="${logbackAppenders:-CONSOLE,FILE}"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
-    <include resource="com/rbkmoney/sharedresources/logback/properties-appender.xml"/>
-    <include resource="com/rbkmoney/sharedresources/logback/json-appender.xml"/>
+    <include resource="dev/vality/sharedresources/logback/console-appender.xml"/>
+    <include resource="dev/vality/sharedresources/logback/properties-appender.xml"/>
+    <include resource="dev/vality/sharedresources/logback/json-appender.xml"/>
 
     <root level="${loggingLevelRoot}">
         <if condition='property("LOG_APPENDERS").contains("CONSOLE")'>
@@ -21,8 +21,8 @@
         </if>
     </root>
 
-    <logger name="com.rbkmoney" level="ALL"/>
-    <logger name="com.rbkmoney.woody" level="ALL"/>
+    <logger name="dev.vality" level="ALL"/>
+    <logger name="dev.vality.woody" level="ALL"/>
 
     <jmxConfigurator/>
 </configuration>
