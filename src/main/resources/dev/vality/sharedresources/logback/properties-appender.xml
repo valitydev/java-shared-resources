@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <included>
-    <springProperty scope="context" name="logbackAppenders" source="logback.appenders" defaultValue="CONSOLE,FILE"/>
+    <springProperty scope="context" name="logbackAppenders" source="logback.appenders" defaultValue="CONSOLE"/>
     <springProperty scope="context" name="loggingLevelRoot" source="logging.level.root" defaultValue="INFO"/>
-    <springProperty scope="context" name="cachePeriod" source="logging.rotate.cache.period" defaultValue="300000"/>
 </included>

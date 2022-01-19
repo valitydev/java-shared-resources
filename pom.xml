@@ -46,11 +46,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney.logback</groupId>
-            <artifactId>nop-rolling</artifactId>
-            <version>1.0.4</version>
-        </dependency>
-        <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>7.0.1</version>

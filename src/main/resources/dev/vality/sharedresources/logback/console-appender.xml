@@ -15,8 +15,7 @@
                         {
                         "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
                         "@severity": "%level",
-                        "application": "@artifactId@",
-                        "application_version": "@version@"
+                        "application": "@artifactId@"
                         }
                     </pattern>
                 </pattern>
