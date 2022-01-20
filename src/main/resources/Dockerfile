@@ -1,6 +1,5 @@
 # @dockerfile.Template@
-FROM @dockerfile.registry@/openjdk/15-jdk-slim
-MAINTAINER @project.maintainer@
+FROM openjdk:15-jdk-slim
 
 COPY @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
 
