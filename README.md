@@ -44,6 +44,13 @@
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-remote-resources-plugin</artifactId>
     <version>1.7.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-filtering</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+    </dependencies>
     <configuration>
         <resourceBundles>
             <resourceBundle>dev.vality:shared-resources:${shared.resources.version}</resourceBundle>
