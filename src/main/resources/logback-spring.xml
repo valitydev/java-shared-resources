@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_FILE"
-              value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}/@artifactId@.json}"/>
     <property name="LOG_APPENDERS" value="${logbackAppenders:-CONSOLE}"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="dev/vality/sharedresources/logback/console-appender.xml"/>

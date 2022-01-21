@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <included>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc/>
@@ -14,8 +14,7 @@
                     <pattern>
                         {
                         "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
-                        "@severity": "%level",
-                        "application": "@artifactId@"
+                        "@severity": "%level"
                         }
                     </pattern>
                 </pattern>
