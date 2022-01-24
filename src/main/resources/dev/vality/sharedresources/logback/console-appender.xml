@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <included>
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file>
-        <rollingPolicy class="com.rbkmoney.log.appender.NoopRollingPolicy"/>
-        <triggeringPolicy class="com.rbkmoney.log.appender.RotationBasedTriggeringPolicy">
-            <checkCachePeriod>${cachePeriod}</checkCachePeriod>
-        </triggeringPolicy>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc/>
@@ -19,9 +14,7 @@
                     <pattern>
                         {
                         "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
-                        "@severity": "%level",
-                        "application": "@artifactId@",
-                        "application_version": "@version@"
+                        "@severity": "%level"
                         }
                     </pattern>
                 </pattern>

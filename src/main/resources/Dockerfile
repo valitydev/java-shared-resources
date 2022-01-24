@@ -1,16 +1,14 @@
 # @dockerfile.Template@
-FROM @dockerfile.registry@/rbkmoney/service-java:@dockerfile.base.service.tag@
-MAINTAINER @project.maintainer@
+FROM openjdk:15-jdk-slim
 
-COPY @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
+RUN useradd -s /bin/false -U -u 20000 vality
+
+COPY --chown=vality:vality @artifactId@-@version@.jar /opt/@artifactId@/@artifactId@.jar
+
+USER vality:vality
 
 CMD ["java", "-Xmx256m", "-jar","/opt/@artifactId@/@artifactId@.jar"]
 
 EXPOSE @exposed.ports@
-
-LABEL com.rbkmoney.@artifactId@.parent=service-java \
-    com.rbkmoney.@artifactId@.parent_tag=@dockerfile.base.service.tag@ \
-    com.rbkmoney.@artifactId@.commit_id=@git.commit.id@ \
-    com.rbkmoney.@artifactId@.branch=@git.branch@
 
 WORKDIR /opt/@artifactId@

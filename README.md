@@ -4,15 +4,14 @@
 
 ```
 <properties>
-    <project.maintainer>Inal Arsanukaev &lt;i.arsanukaev@rbkmoney.com&gt;</project.maintainer>
     <server.port>8022</server.port>
     <dockerfile.base.service.tag>f26fcc19d1941ab74f1c72dd8a408be17a769333</dockerfile.base.service.tag>
     <damsel.version>1.151-4018c41</damsel.version>
-    <shared.resources.version>0.2.1</shared.resources.version>
+    <shared.resources.version>1.0.0</shared.resources.version>
 ...
 
 <dependency>
-    <groupId>com.rbkmoney</groupId>
+    <groupId>dev.vality</groupId>
     <artifactId>shared-resources</artifactId>
     <version>${shared.resources.version}</version>
 </dependency>
@@ -44,17 +43,17 @@
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-remote-resources-plugin</artifactId>
-    <version>1.5</version>
+    <version>1.7.0</version>
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-filtering</artifactId>
-            <version>1.3</version>
+            <version>3.2.0</version>
         </dependency>
     </dependencies>
     <configuration>
         <resourceBundles>
-            <resourceBundle>com.rbkmoney:shared-resources:${shared.resources.version}</resourceBundle>
+            <resourceBundle>dev.vality:shared-resources:${shared.resources.version}</resourceBundle>
         </resourceBundles>
         <attachToMain>false</attachToMain>
         <attachToTest>false</attachToTest>
