@@ -11,15 +11,14 @@
                 <appender-ref ref="CONSOLE"/>
             </then>
         </if>
-        <if condition='property("LOG_APPENDERS").contains("FILE")'>
+        <if condition='property("LOG_APPENDERS").contains("STDOUT")'>
             <then>
-                <appender-ref ref="FILE"/>
+                <appender-ref ref="STDOUT"/>
             </then>
         </if>
     </root>
 
-    <logger name="dev.vality" level="ALL"/>
-    <logger name="dev.vality.woody" level="ALL"/>
+    <include file="dev/vality/sharedresources/logback/loggers.xml"/>
 
     <jmxConfigurator/>
 </configuration>
