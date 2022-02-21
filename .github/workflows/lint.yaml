@@ -14,3 +14,14 @@ jobs:
         uses: frenck/action-yamllint@v1
         with:
           warnings: false
+
+  hadolint:
+    name: hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 🚀 Run hadolint
+        uses: hadolint/hadolint-action@v1.6.0
+        with:
+          recursive: true
