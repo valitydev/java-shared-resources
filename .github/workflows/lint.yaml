@@ -36,3 +36,4 @@ jobs:
         uses: reviewdog/action-remark-lint@v5
         with:
           reporter: github-pr-check
+          filter_mode: file
