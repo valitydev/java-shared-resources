@@ -25,4 +25,4 @@ jobs:
         uses: hadolint/hadolint-action@v1.6.0
         with:
           recursive: true
-          format: json
+          format: checkstyle
