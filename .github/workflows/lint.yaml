@@ -4,18 +4,6 @@ on:
   pull_request:
 
 jobs:
-  yamllint:
-    name: yamllint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
-      - name: 🚀 Run yamllint
-        uses: reviewdog/action-yamllint@v1
-        with:
-          reporter: github-pr-check
-          filter_mode: nofilter
-          yamllint_flags: . --no-warnings
 
   hadolint:
     name: hadolint
