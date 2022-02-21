@@ -7,6 +7,9 @@ COPY --chown=vality:vality @artifactId@-@version@.jar /opt/@artifactId@/@artifac
 
 USER vality:vality
 
+
+dsfdsfsdf
+
 CMD ["java", "-Xmx256m", "-jar","/opt/@artifactId@/@artifactId@.jar"]
 
 EXPOSE @exposed.ports@
