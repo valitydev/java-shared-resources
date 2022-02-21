@@ -3,13 +3,6 @@
 Для этого в pom нужно добавить:
 
 ```
-<properties>
-    <server.port>8022</server.port>
-    <dockerfile.base.service.tag>f26fcc19d1941ab74f1c72dd8a408be17a769333</dockerfile.base.service.tag>
-    <damsel.version>1.151-4018c41</damsel.version>
-    <shared.resources.version>1.0.0</shared.resources.version>
-...
-
 <dependency>
     <groupId>dev.vality</groupId>
     <artifactId>shared-resources</artifactId>
