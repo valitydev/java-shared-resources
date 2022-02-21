@@ -1,4 +1,0 @@
-<included>
-    <logger name="dev.vality" level="INFO"/>
-    <logger name="dev.vality.woody" level="INFO"/>
-</included>

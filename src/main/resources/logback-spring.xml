@@ -1,24 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_APPENDERS" value="${logbackAppenders:-CONSOLE}"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <include resource="dev/vality/sharedresources/logback/console-appender.xml"/>
-    <include resource="dev/vality/sharedresources/logback/properties-appender.xml"/>
+    <springProperty scope="context" name="springApplicationName" source="spring.application.name"/>
+    <springProperty scope="context" name="logbackAppender" source="logback.appender" defaultValue="COLOR_CONSOLE"/>
+    <springProperty scope="context" name="loggingLevelRoot" source="logging.level.root" defaultValue="INFO"/>
+    <springProperty scope="context" name="loggingLevelSpringApplicationRoot"
+                    source="logging.level.spring-application-root" defaultValue="INFO"/>
+    <springProperty scope="context" name="loggingLevelSpringApplicationWoody"
+                    source="logging.level.spring-application-woody" defaultValue="INFO"/>
+    <springProperty scope="context" name="loggerNameSpringApplicationRoot" source="logger.name.spring-application-root"
+                    defaultValue="dev.vality"/>
+    <springProperty scope="context" name="loggerNameSpringApplicationWoody"
+                    source="logger.name.spring-application-woody" defaultValue="dev.vality.woody"/>
+
+    <appender name="DEFAULT_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>${CONSOLE_LOG_CHARSET}</charset>
+        </encoder>
+    </appender>
+
+    <appender name="COLOR_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %black(%d{ISO8601}) [%blue(%t)] %magenta(${PID:- }) %highlight(%-5level)
+                %cyan(%logger{36}).%yellow(%M):%white(%L) — %m%n%wEx
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="JSON_K8S_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <mdc/>
+                <threadName/>
+                <message/>
+                <version/>
+                <loggerName/>
+                <pattern>
+                    <pattern>
+                        {
+                        "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
+                        "@severity": "%level",
+                        "application": "${springApplicationName}",
+                        "service": "${springApplicationName}"
+                        }
+                    </pattern>
+                </pattern>
+                <stackTrace>
+                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <shortenedClassNameLength>20</shortenedClassNameLength>
+                        <rootCauseFirst>true</rootCauseFirst>
+                    </throwableConverter>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
 
     <root level="${loggingLevelRoot}">
-        <if condition='property("LOG_APPENDERS").contains("CONSOLE")'>
+        <if condition='"${logbackAppender}".equals("COLOR_CONSOLE")'>
             <then>
-                <appender-ref ref="CONSOLE"/>
+                <appender-ref ref="COLOR_CONSOLE"/>
             </then>
-        </if>
-        <if condition='property("LOG_APPENDERS").contains("STDOUT")'>
-            <then>
-                <appender-ref ref="STDOUT"/>
-            </then>
+            <else>
+                <if condition='"${logbackAppender}".equals("JSON_K8S_CONSOLE")'>
+                    <then>
+                        <appender-ref ref="JSON_K8S_CONSOLE"/>
+                    </then>
+                    <else>
+                        <appender-ref ref="DEFAULT_CONSOLE"/>
+                    </else>
+                </if>
+            </else>
         </if>
     </root>
 
-    <include file="dev/vality/sharedresources/logback/loggers.xml"/>
+    <logger name="${loggerNameSpringApplicationRoot}" level="${loggingLevelSpringApplicationRoot}"/>
+    <logger name="${loggerNameSpringApplicationWoody}" level="${loggingLevelSpringApplicationWoody}"/>
 
     <jmxConfigurator/>
 </configuration>

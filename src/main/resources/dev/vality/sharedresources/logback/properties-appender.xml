@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<included>
-    <springProperty scope="context" name="logbackAppenders" source="logback.appenders" defaultValue="CONSOLE"/>
-    <springProperty scope="context" name="loggingLevelRoot" source="logging.level.root" defaultValue="INFO"/>
-</included>
