@@ -27,24 +27,28 @@
     <appender name="JSON_K8S_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
-                <mdc/>
-                <threadName/>
-                <message/>
-                <version/>
-                <loggerName/>
                 <pattern>
                     <pattern>
                         {
                         "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
                         "@severity": "%level",
+                        "thread_name": "%thread",
                         "application": "${springApplicationName}",
-                        "service": "${springApplicationName}"
+                        "service": "${springApplicationName}",
+                        "logger_name": "%logger",
+                        "method": "%method",
+                        "line": "%line",
+                        "message": "%message"
                         }
                     </pattern>
                 </pattern>
                 <stackTrace>
                     <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <maxDepthPerThrowable>30</maxDepthPerThrowable>
+                        <maxLength>2048</maxLength>
                         <shortenedClassNameLength>20</shortenedClassNameLength>
+                        <exclude>^sun\.reflect\..*\.invoke</exclude>
+                        <exclude>^net\.sf\.cglib\.proxy\.MethodProxy\.invoke</exclude>
                         <rootCauseFirst>true</rootCauseFirst>
                     </throwableConverter>
                 </stackTrace>
