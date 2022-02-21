@@ -1,15 +1,45 @@
-Данный репозиторий содержит файлы, которые повторяются от проекта к проекту и могут быть шаблонизированы.
+Данный репозиторий содержит шаблоны (используемых в сервисах домена) ресурсов
 
-Для этого в pom нужно добавить:
+#Переопределяемые настройки `logback`
 
+`application.yml`
+```yaml
+spring:
+  application:
+    name: '@project.name@'
+logback:
+  appender: JSON_K8S_CONSOLE # возможные значения: DEFAULT_CONSOLE || COLOR_CONSOLE || JSON_K8S_CONSOLE
+logging:
+  level:
+    root: info
+    spring-application-root: info
+    spring-application-woody: info
+  pattern:
+    spring-application-json-k8s-console: >-
+      {
+        "asd": "asd",
+        "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
+        "@severity": "%level",
+        "thread_name": "%thread",
+        "application": "${spring.application.name}",
+        "logger_name": "%logger",
+        "method": "%method",
+        "line": "%line",
+        "message": "%message"
+      }
+logger:
+  name:
+    spring-application-root: dev.vality.magista
+    spring-application-woody: dev.vality.woody
 ```
+
+#`pom.xml`
+```xml
 <dependency>
     <groupId>dev.vality</groupId>
     <artifactId>shared-resources</artifactId>
     <version>${shared.resources.version}</version>
 </dependency>
-
-...    
 
 <resources>
     <resource>
@@ -60,8 +90,3 @@
     </executions>
 </plugin>
 ```
-
-после этого можно удалить локальные файлы: 
-1. Dockerfile
-1. git.properties
-1. logback-spring.xml
