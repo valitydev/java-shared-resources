@@ -15,6 +15,7 @@ jobs:
         with:
           reporter: github-pr-check
           filter_mode: nofilter
+          yamllint_flags: --no-warnings
 
   hadolint:
     name: hadolint
