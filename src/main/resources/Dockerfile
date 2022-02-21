@@ -9,7 +9,7 @@ USER vality:vality
 
 CMD ["java", "-Xmx256m", "-jar","/opt/@artifactId@/@artifactId@.jar"]
 
-# hadolint ignore=DL1000
+# hadolint ignore=DL1000,DL3011
 EXPOSE @exposed.ports@
 
 WORKDIR /opt/@artifactId@
