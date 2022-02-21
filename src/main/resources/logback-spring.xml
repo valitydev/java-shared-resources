@@ -8,6 +8,7 @@
     <springProperty scope="context" name="loggingLevelSpringApplicationWoody" source="logging.level.spring-application-woody" defaultValue="INFO"/>
     <springProperty scope="context" name="loggerNameSpringApplicationRoot" source="logger.name.spring-application-root" defaultValue="dev.vality"/>
     <springProperty scope="context" name="loggerNameSpringApplicationWoody" source="logger.name.spring-application-woody" defaultValue="dev.vality.woody"/>
+    <springProperty scope="context" name="loggerPatternSpringApplicationJsonK8sConsole" source="logging.pattern.spring-application-json-k8s-console" defaultValue="{&quot;@timestamp&quot;: &quot;%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}&quot;,&quot;@severity&quot;: &quot;%level&quot;,&quot;thread_name&quot;: &quot;%thread&quot;,&quot;application&quot;: &quot;${springApplicationName}&quot;,&quot;service&quot;: &quot;${springApplicationName}&quot;,&quot;logger_name&quot;: &quot;%logger&quot;,&quot;method&quot;: &quot;%method&quot;,&quot;line&quot;: &quot;%line&quot;,&quot;message&quot;: &quot;%message&quot;}"/>
 
     <appender name="DEFAULT_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -28,19 +29,7 @@
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <pattern>
-                    <pattern>
-                        {
-                        "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
-                        "@severity": "%level",
-                        "thread_name": "%thread",
-                        "application": "${springApplicationName}",
-                        "service": "${springApplicationName}",
-                        "logger_name": "%logger",
-                        "method": "%method",
-                        "line": "%line",
-                        "message": "%message"
-                        }
-                    </pattern>
+                    <pattern>${loggerPatternSpringApplicationJsonK8sConsole}</pattern>
                 </pattern>
                 <stackTrace>
                     <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
