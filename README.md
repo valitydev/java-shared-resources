@@ -4,9 +4,6 @@
 
 `application.yml`
 ```yaml
-spring:
-  application:
-    name: '@project.name@'
 logback:
   appender: JSON_K8S_CONSOLE # возможные значения: DEFAULT_CONSOLE || COLOR_CONSOLE || JSON_K8S_CONSOLE
 ```

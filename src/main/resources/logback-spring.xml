@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <springProperty scope="context" name="springApplicationName" source="spring.application.name"/>
     <springProperty scope="context" name="logbackAppender" source="logback.appender" defaultValue="COLOR_CONSOLE"/>
     <springProperty scope="context" name="loggingLevelRoot" source="logging.level.root" defaultValue="INFO"/>
 
@@ -30,11 +29,7 @@
                             "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
                             "@severity": "%level",
                             "thread_name": "%thread",
-                            "application": "${springApplicationName}",
-                            "commit_id": "@git.commit.id.abbrev@",
                             "logger_name": "%logger",
-                            "method": "%method",
-                            "line": "%line",
                             "message": "%message"
                         }
                     </pattern>
