@@ -17,7 +17,6 @@ logging:
   pattern:
     spring-application-json-k8s-console: >-
       {
-        "asd": "asd",
         "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
         "@severity": "%level",
         "thread_name": "%thread",
@@ -25,7 +24,8 @@ logging:
         "logger_name": "%logger",
         "method": "%method",
         "line": "%line",
-        "message": "%message"
+        "message": "%message",
+        "customField": "${customField}"
       }
 logger:
   name:
@@ -40,7 +40,8 @@ logger:
     <artifactId>shared-resources</artifactId>
     <version>${shared.resources.version}</version>
 </dependency>
-
+```
+```xml
 <resources>
     <resource>
         <directory>${project.build.directory}/maven-shared-archive-resources</directory>
@@ -62,7 +63,8 @@ logger:
         <filtering>true</filtering>
     </resource>
 </resources>
-
+```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-remote-resources-plugin</artifactId>
