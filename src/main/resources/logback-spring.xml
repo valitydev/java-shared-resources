@@ -28,6 +28,7 @@
     <appender name="JSON_K8S_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
+                <mdc/>
                 <pattern>
                     <pattern>${loggerPatternSpringApplicationJsonK8sConsole}</pattern>
                 </pattern>
