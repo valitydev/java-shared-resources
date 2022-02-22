@@ -4,27 +4,15 @@ on:
   pull_request:
 
 jobs:
-
-  hadolint:
-    name: hadolint
+  reviewdog:
+    name: reviewdog
     runs-on: ubuntu-latest
     steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
-      - name: 🚀 Run hadolint
-        uses: reviewdog/action-hadolint@v1
+      - uses: reviewdog/action-setup@v1
         with:
-          reporter: github-pr-check
-          filter_mode: nofilter
-
-  remark-lint:
-    name: hadolint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
-      - name: 🚀 Run remark-lint
-        uses: reviewdog/action-remark-lint@v5
-        with:
-          reporter: github-pr-check
-          filter_mode: nofilter
+          reviewdog_version: latest
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          reviewdog -reporter=github-pr-review -runners=misspell,shellcheck,yamllint,hadolint
