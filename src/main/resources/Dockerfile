@@ -1,4 +1,3 @@
-# @dockerfile.Template@
 FROM openjdk:15-jdk-slim
 
 RUN useradd -s /bin/false -U -u 20000 vality
