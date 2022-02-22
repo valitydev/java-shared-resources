@@ -9,28 +9,6 @@ spring:
     name: '@project.name@'
 logback:
   appender: JSON_K8S_CONSOLE # возможные значения: DEFAULT_CONSOLE || COLOR_CONSOLE || JSON_K8S_CONSOLE
-logging:
-  level:
-    root: info
-    spring-application-root: info
-    spring-application-woody: info
-  pattern:
-    spring-application-json-k8s-console: >-
-      {
-        "@timestamp": "%date{yyy-MM-dd'T'HH:mm:ss.SSSXXX, UTC}",
-        "@severity": "%level",
-        "thread_name": "%thread",
-        "application": "${spring.application.name}",
-        "logger_name": "%logger",
-        "method": "%method",
-        "line": "%line",
-        "message": "%message",
-        "customField": "${customField}"
-      }
-logger:
-  name:
-    spring-application-root: dev.vality.magista
-    spring-application-woody: dev.vality.woody
 ```
 
 #`pom.xml`
