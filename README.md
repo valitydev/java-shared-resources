@@ -1,23 +1,22 @@
-Данный репозиторий содержит файлы, которые повторяются от проекта к проекту и могут быть шаблонизированы.
+Данный репозиторий содержит шаблоны (используемых в сервисах домена) ресурсов
 
-Для этого в pom нужно добавить:
+#Переопределяемые настройки `logback`
 
+`application.yml`
+```yaml
+logback:
+  appender: JSON_K8S_CONSOLE # возможные значения: DEFAULT_CONSOLE || COLOR_CONSOLE || JSON_K8S_CONSOLE
 ```
-<properties>
-    <server.port>8022</server.port>
-    <dockerfile.base.service.tag>f26fcc19d1941ab74f1c72dd8a408be17a769333</dockerfile.base.service.tag>
-    <damsel.version>1.151-4018c41</damsel.version>
-    <shared.resources.version>1.0.0</shared.resources.version>
-...
 
+#`pom.xml`
+```xml
 <dependency>
     <groupId>dev.vality</groupId>
     <artifactId>shared-resources</artifactId>
     <version>${shared.resources.version}</version>
 </dependency>
-
-...    
-
+```
+```xml
 <resources>
     <resource>
         <directory>${project.build.directory}/maven-shared-archive-resources</directory>
@@ -39,7 +38,8 @@
         <filtering>true</filtering>
     </resource>
 </resources>
-
+```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-remote-resources-plugin</artifactId>
@@ -67,8 +67,3 @@
     </executions>
 </plugin>
 ```
-
-после этого можно удалить локальные файлы: 
-1. Dockerfile
-1. git.properties
-1. logback-spring.xml
