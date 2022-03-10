@@ -1,6 +1,9 @@
 name: Maven Deploy Artifact
 
 on:
+  pull_request:
+    branches:
+      - '*'
   push:
     branches:
       - 'master'
@@ -8,7 +11,7 @@ on:
 
 jobs:
   deploy:
-    uses: valitydev/base-workflow/.github/workflows/maven-library-deploy.yml@v1
+    uses: valitydev/base-workflow/.github/workflows/maven-library-deploy.yml@v2
     secrets:
       server-username: ${{ secrets.OSSRH_USERNAME }}
       server-password: ${{ secrets.OSSRH_TOKEN }}

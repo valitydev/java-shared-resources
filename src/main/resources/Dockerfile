@@ -1,5 +1,5 @@
 # @dockerfile.Template@
-FROM openjdk:15-jdk-slim
+FROM eclipse-temurin:17.0.2_8-jdk-nanoserver
 
 RUN useradd -s /bin/false -U -u 20000 vality
 
