@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17.0.2_8-jdk-nanoserver
+FROM eclipse-temurin:17
 
 RUN useradd -s /bin/false -U -u 20000 vality
 
