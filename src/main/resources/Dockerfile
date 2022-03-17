@@ -1,4 +1,4 @@
-FROM openjdk:15-jdk-slim
+FROM eclipse-temurin:17
 
 RUN useradd -s /bin/false -U -u 20000 vality
 
