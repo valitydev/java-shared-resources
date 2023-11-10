@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17
+FROM ghcr.io/valitydev/temurin-jemalloc:sha-06735f3
 
 RUN useradd -s /bin/false -U -u 20000 vality
 
