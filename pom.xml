@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>shared-resources</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
     <packaging>jar</packaging>
 
     <name>Java shared resources</name>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>7.2</version>
+            <version>8.0</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.janino</groupId>
