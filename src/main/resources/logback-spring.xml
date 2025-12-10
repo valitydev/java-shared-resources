@@ -66,8 +66,17 @@
                 </encoder>
             </appender>
 
-            <root level="${loggingLevelRoot}">
+            <appender name="JSON_K8S_CONSOLE_OTEL"
+                      class="io.opentelemetry.instrumentation.logback.mdc.v1_0.OpenTelemetryAppender">
+                <addBaggage>true</addBaggage>
+                <traceIdKey>otel_trace_id</traceIdKey>
+                <spanIdKey>otel_span_id</spanIdKey>
+                <traceFlagsKey>otel_trace_flags</traceFlagsKey>
                 <appender-ref ref="JSON_K8S_CONSOLE"/>
+            </appender>
+
+            <root level="${loggingLevelRoot}">
+                <appender-ref ref="JSON_K8S_CONSOLE_OTEL"/>
             </root>
         </then>
     </if>

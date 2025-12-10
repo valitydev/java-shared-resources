@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>shared-resources</artifactId>
-    <version>3.0.1</version>
+    <version>4.0.0-test-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Java shared resources</name>
@@ -38,6 +38,10 @@
         <url>https://github.com/valitydev/java-shared-resources/tree/master</url>
     </scm>
 
+    <properties>
+        <opentelemetry.javaagent.version>2.22.0</opentelemetry.javaagent.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,10 +59,48 @@
             <artifactId>janino</artifactId>
             <version>3.1.9</version>
         </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.javaagent</groupId>
+            <artifactId>opentelemetry-javaagent</artifactId>
+            <version>${opentelemetry.javaagent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-logback-mdc-1.0</artifactId>
+            <version>2.22.0-alpha</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-opentelemetry-javaagent</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>io.opentelemetry.javaagent</groupId>
+                                    <artifactId>opentelemetry-javaagent</artifactId>
+                                    <version>${opentelemetry.javaagent.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                    <destFileName>opentelemetry-javaagent.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-remote-resources-plugin</artifactId>
                 <version>3.0.0</version>
