@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>shared-resources</artifactId>
-    <version>4.0.0-alpha2</version>
+    <version>4.0.0-alpha1</version>
     <packaging>jar</packaging>
 
     <name>Java shared resources</name>
@@ -81,7 +81,7 @@
                 <executions>
                     <execution>
                         <id>copy-opentelemetry-javaagent</id>
-                        <phase>generate-resources</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>copy</goal>
                         </goals>
@@ -93,7 +93,7 @@
                                     <version>${opentelemetry.javaagent.version}</version>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${project.basedir}/src/main/resources</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
                                     <destFileName>opentelemetry-javaagent.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
