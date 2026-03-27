@@ -39,7 +39,7 @@
     </scm>
 
     <properties>
-        <opentelemetry.javaagent.version>2.22.0</opentelemetry.javaagent.version>
+        <opentelemetry.javaagent.version>2.26.1</opentelemetry.javaagent.version>
     </properties>
 
     <dependencies>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-logback-mdc-1.0</artifactId>
-            <version>2.22.0-alpha</version>
+            <version>2.26.1-alpha</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
