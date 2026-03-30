@@ -1,14 +1,20 @@
-Данный репозиторий содержит шаблоны (используемых в сервисах домена) ресурсов
+# shared-resources
 
-#Переопределяемые настройки `logback`
+Данный репозиторий содержит шаблоны ресурсов, используемых в сервисах домена.
 
-`application.yml`
+## Переопределяемые настройки `logback`
+
+`application.yml`:
+
 ```yaml
 logback:
   appender: JSON_K8S_CONSOLE # возможные значения: DEFAULT_CONSOLE || COLOR_CONSOLE || JSON_K8S_CONSOLE
 ```
 
-#`pom.xml`
+## Настройка `pom.xml`
+
+Dependency:
+
 ```xml
 <dependency>
     <groupId>dev.vality</groupId>
@@ -16,6 +22,9 @@ logback:
     <version>${shared.resources.version}</version>
 </dependency>
 ```
+
+Resources:
+
 ```xml
 <resources>
     <resource>
@@ -31,6 +40,7 @@ logback:
         <filtering>true</filtering>
         <excludes>
             <exclude>Dockerfile</exclude>
+            <exclude>opentelemetry-javaagent.jar</exclude>
         </excludes>
     </resource>
     <resource>
@@ -39,6 +49,9 @@ logback:
     </resource>
 </resources>
 ```
+
+Plugin:
+
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -67,3 +80,13 @@ logback:
     </executions>
 </plugin>
 ```
+
+## Отключение OpenTelemetry Java Agent
+
+Для отключения Java agent используйте один из вариантов:
+
+- Переменная окружения: `OTEL_JAVAAGENT_ENABLED=false`
+- JVM-параметр: `-Dotel.javaagent.enabled=false`
+
+Документация:
+[Disabling the agent entirely](https://opentelemetry.io/docs/zero-code/java/agent/disable/#disabling-the-agent-entirely)
