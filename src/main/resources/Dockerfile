@@ -1,4 +1,4 @@
-FROM ghcr.io/valitydev/temurin-jemalloc:sha-402a042
+FROM ghcr.io/valitydev/temurin-jemalloc:sha-9d754ec
 
 RUN useradd -s /bin/false -U -u 20000 vality
 
